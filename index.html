@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Python Opencv モザイクをかけよう！</title>
+<link rel="stylesheet" href="C:\Practice\web-site\number0\0new.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
+<link href="C:\Users\c7not\Downloads\fontawesome-free-6.0.0-beta3-web\fontawesome-free-6.0.0-beta3-web/css/all.min.css" rel="stylesheet"><!--fontawesome-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.0/css/all.css">
+</head>
+<body>
+    <div class="all">
+    <header>
+        <h1 class="name wf-notosansjapanese" id="menu">姫のPython日記</h1>  
+        
+    </header>
+    
+        <h1 class="Title">Python Opencv モザイクをかけよう！</h1>
+        <p class="date">投稿日時：月日</p>
+        <a class="urlTwitter" href="https://mobile.twitter.com/AnnaShirayuki" target="_blank">私のTwitterはこちら！（フォローしてね）</a>
+        <p>コードに関する質問やお問い合わせは上記のTwitterにどうぞ～（フォローお願いします！）</p>
+
+        <div class="TableContents">
+            <p class="contents">～ Contents ～</p>
+            <ul class="UlContents1">
+                <div class="LiWord1"><li class="iconPen"><a href="#1">Opencvを使ってモザイクをかけよう！</a></li></div>
+                <div class="LiWord1"><li class="iconPen"><a href="#2">コードはこれだっ！</a></li></div>
+                <div class="LiWord1"><li class="iconPen"><a href="#3">解説！</a></div>
+                    <ul class="UlContents2">
+                        <div class="LiWord2"><li class="iconTri"><a href="#31">コード説明</a></li></div>
+                        <div class="LiWord2"><li class="iconTri"><a href="#32">関数説明</a></div>
+                            <ul>
+                                <div><li class="FunWord"><a href="#321">mosaic(img,rect,size)</a></li></div>
+                                <div><li class="FunWord"><a href="#322">cv2.resize(img,dsize,fx,fy,interpolation)</a></li></div>
+                                <div><li class="FunWord"><a href="#323">変数.copy()</a></li></div>
+                                <div><li class="FunWord"><a href="#324">cv2.cvtColor(img,定数)</a></li></div>
+                                <div><li class="FunWord"><a href="#325">cascade.detectMultiscale(img,minSize=(,))</a></li></div>
+                                <div><li class="FunWord"><a href="#326">quit()</a></li></div>
+                            </ul>
+                        </li>
+                    </ul>
+                
+                <div class="LiWord1"><li class="iconPen"><a href="#4">質問コーナー</a></li></div>
+                <div class="LiWord1"><li class="iconPen"><a href="#5">結果！！</a></li></div>
+            </ul>
+        </div>
+
+
+
+        <div class="subtitles">
+            <p class="subtitle wf-notosansjapanese" id="1">Opencvを使ってモザイクをかけよう！</p>
+        </div>
+        <div class="firstContents">
+        <div class="word1">    
+            <p>初投稿です。v(￣Д￣)v ｲｴｲ</p>
+            <p>今回はOpencvを使って顔にモザイクをかけます。</p>
+        </div>
+
+        <div class="picture">
+            <p>使用した写真はこれです。（笑顔がまぶしい。。。）</p>
+            <img title="pic" src="C:\Practice\web-site\number0\0many-people.jpg" alt="写真1">
+          
+        </div>
+        
+        <div class="code-all">
+            
+            <div class="subtitles">
+                <p class="subtitle wf-notosansjapanese" id="2">コードはこれだっ！</p>
+            </div>
+    
+            <div class="code">
+                <pre>
+<ol class="ol">
+<div class="code-div"><li><code>import cv2</code></li></div><!--
+--><div class="code-div"><li><code>import matplotlib.pyplot as plp</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">#モザイク関数作成。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>def mosaic(img,rect,size):</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">　　#モザイクかける領域を得る。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>    (x1,y1,x2,y2)=rect</code></li></div><!--
+                        --><div class="code-div"><li><code>    w=x2-x1</code></li></div><!--
+                        --><div class="code-div"><li><code>    h=y2-y1</code></li></div><!--
+                        --><div class="code-div"><li><code>    i_rect=img[y1:y2,x1:x2]</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">　　#一度縮小して拡大。sizeは縮小された画像の大きさ。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>    i_small=cv2.resize(i_rect,(size,size))</code></li></div><!--
+                        --><div class="code-div"><li><code>    i_mosaic=cv2.resize(i_small,(w,h),interpolation=cv2.INTER_AREA)</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">　　#元画像にモザイク画像を重ねる。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>    img2=img.copy()</code></li></div><!--
+                        --><div class="code-div"><li><code>    img2[y1:y2,x1:x2]=i_mosaic</code></li></div><!--                           
+                        --><div class="code-div"><li><code>    return img2</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">#カスケードファイルを使って分類器作成。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>cascade_file="OpenCV_haarcascade_frontalface_alt.xml"</code></li></div><!--
+                        --><div class="code-div"><li><code>cascade=cv2.CascadeClassifier(cascade_file)</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">#画像をグレースケールに変換。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>img=cv2.imread("people.jpg")</code></li></div><!--
+                        --><div class="code-div"><li><code>img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">#顔検出実行！</span></code></li></div><!--
+                        --><div class="code-div"><li><code>face_list=cascade.detectMultiScale(img,minSize=(10,10))</code></li></div><!--
+                        --><div class="code-div"><li><code>if len(face_list)==0:</code></li></div><!--
+                        --><div class="code-div"><li><code>    print("There aren't any people.")</code></li></div><!--
+                        --><div class="code-div"><li><code>    quit()</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">#認識した部分にモザイクをかける。モザイク関数を使用。</span></code></li></div><!--
+                        --><div class="code-div"><li><code>for (x,y,w,h) in face_list:</code></li></div><!--
+                        --><div class="code-div"><li><code>    img=mosaic(img,(x,y,x+w,y+h),10)</code></li></div><!--
+                        --><div class="code-div"><li><code><span class="code-text">#出力</span></code></li></div><!--
+                        --><div class="code-div"><li><code>cv2.imwrite("result.jpg",img)</code></li></div><!--
+                        --><div class="code-div"><li><code>plp.imshow(cv2.cvtColor(img,cv2.COLOR_BGR2RGB))</code></li></div><!--
+--><div class="code-div code-last"><li><code>plp.show()</code></li></div>
+</ol></pre>
+            </div>
+
+        </div>
+        <div class="subtitles">
+            <p class="subtitle wf-notosansjapanese" id="3">解説！</p>
+        </div>
+        <div class="explanations">
+            <div class="explanation1">
+            
+            <p class="exFirst">そもそも、モザイクはどうやって作るのか？頭の良い誰かが考えてくれました。</p>
+            <p>皆さん、写真を<mark class="m3tc">縮小した後に拡大</mark>すると「画質悪っ！」ってなったことありますよね(?)</p>
+            <p>このような画像が所謂<mark class="m2tn">「モザイク画像」</mark>なんです。。。</p>
+            <p>それを元の写真の上に貼り、顔面モザイク完成です。意外と単純ですよね。</p>
+            <p>では、どうして写真の大きさを変えるだけでモザイク写真になってしまうのでしょう？？</p>
+            <p>これは<mark class="m1tc">「画素」</mark>が関係しているからなんです！！</p>
+            <p>画素とは、Pixel（ピクセル）とも呼ばれていて、画像の<mark class="m2tn">「最小単位」</mark>のことです。</p>
+            <p>例えば「デジタル画像」や「白黒画像」は数字で表すことができるのですが、</p>
+            <p>デジタル画像は<mark class="m4">0（黒）ー225（白）</mark>、白黒画像は<mark class="m4">0（黒）ー1（白）</mark>の範囲で表現されています。</p>
+            <p>まあここら辺は画像関係の知識なので興味のある方は調べてみてください♪</p>
+            <p></p>
+            <p>さて、私たちの目的は「顔に」モザイクをかけることですよね。</p>
+            <p>故に、写真から<mark class="m3tn">顔を検出</mark>し、そこを切り取るような<mark class="m3tn">モザイク処理</mark>をしないといけません。</p>
+            <p>こんな時に・・・？</p>
+            <p>テッテケテッテッテー！<mark class="m1tc">OpenCV～！</mark>（ドラ〇もんのBGM）</p>
+            <p>OpenCVを使いつつ、顔の検出、モザイクを作る関数を作っていきます。</p>
+            <p>これで、モザイクの達人へ！！！</p>
+        
+    </div>
+
+    <div class="explanation2">
+        <div class="code-ex">
+            <p class="codeTitleNormal wf-notosansjapanese" id=31>コード説明</p>
+            <p class="excode">えっと、コードの説明をしますｗ</p>
+            <p class="excode">順序としては「<mark class="m3tn">①関数作り→②OpenCVで分類器作成→③モザイク→④出力</mark>」です。</p>
+        </div>
+
+        <div class="Hukidashi">
+            <p class="codeTitleHukidashi">3～9行目</p>
+        </div>
+            <p class="excode">6行目：<mark class="m2tn">第二引数で得た4つの数</mark>をそれぞれ<mark class="m2tn">x1,y1,x2,y2</mark>に代入。</p>
+            <p class="excode">7,8行目：width,heightを定義。</p>
+            <p class="excode">9行目：y1座標→y2座標、x1座標→x2座標へ「位置と大きさ」(切り取った写真全体)をi_rectへ代入。            </p>
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi">10～16行目</p>
+            </div>
+            <p class="excode">11行目：写真の縮小。</p>
+            <p class="excode">12行目：写真を元のサイズに拡大。<mark class="m2tn">「interpolation=」と書き忘れると動かない</mark>ので注意！</p>
+            <p></p>
+            <p></p>
+            <p class="excode">14行目：img2に、コピーしたimgを代入。<mark class="m2tn">実質img=img2となる。</mark></p>
+            <p class="excode">15行目：img2のモザイクをかけたい位置に、12行目のモザイク写真を代入。これによりimg2の上に<mark class="m2tn">モザイク写真が重なる。</mark></p>
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi">17～22行目</p>
+            </div>
+            <p class="excode">22行目：画像を<mark class="m4">グレースケール</mark>に変換。もし<mark class="m2tn">画像読み込みに失敗していた場合、ここでエラーになる</mark>ので注意！！(cv2.imread()では何も表示されない)</p>
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi">23～30行目</p>
+            </div>
+            <p class="excode">24行目：19行目のcascadeにより検出された顔を<mark class="m3tn">4桁の二次元配列</mark>としてface_listに代入。</p>
+            <p class="excode">25～27行目：face_listが何もなかった時、つまり<mark class="m3tn">顔が検出されなかったとき</mark>に、「顔がありません。」と表示し、それ以降の処理を飛ばす。</p>
+            <p class="excode">29,30行目：24行目で顔が検出された場合、先ほど定義したmosaic()に入れる。</p>
+            <p class="excode">32行目：「result.jpg」というファイルにモザイク付き写真を保存。</p>
+            <p class="excode">33,34行目：matplotlib.pyplotを使って写真を表示。<mark class="m2tn">cv2.COLOR_BGR2RGB</mark>を指定し、画像を<mark class="m2tn">BGR表示からRGB表示へ</mark>変える。この二行はめっちゃ使うので丸暗記しちゃっておｋ。</p>
+        </div>
+            <p class="codeTitleNormal wf-notosansjapanese" id="32">関数説明</p>
+            <div class="explanation3">
+            <p>ここで使用されている関数の説明です♪</p>
+        <div class="function">
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi" id=321>mosaic(img,rect,size)</p>
+                </div>
+            <p class="functionEx">img：モザイクをかけたい写真</p>
+            <p class="functionEx">rect：モザイクをかけたい部分の<mark class="m3tn">座標(x1,y1,x2,y2)</mark></p>
+            <p class="functionEx">size：縮小後の大きさ</p>
+        </div>
+        <div class="function">
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi" id=322>cv2.resize(img,dsize,fx,fy,interpolation)</p>
+                </div>
+            <p><mark class="m5">画像のサイズ変更をする関数。</mark></p>
+            <p>img：<mark class="m3tn">変数として</mark>写真を代入。</p>
+            <p>dsize：<mark class="m3tn">(width,height)</mark>でどのサイズにしたいか数字を代入。</p>
+            <p>fx,fy：x,y方向の倍率。<mark class="m2tn">デフォルト引数</mark>（指定しなくても良い引数）で、<mark class="m3tn">0</mark>が代入される。</p>
+            <p>interpolation：気にしなくて良いです。とりあえず<mark class="m1tc">cv2.INTER_AREA</mark>を指定しちゃいましょう。</p>
+            <p>※一応説明しておくと、ピクセル（画素）領域の関係を利用したリサンプリング（再標本化）で、画像を大幅に縮小した場合、モアレを防げます。</p>
+        </div>
+        <div class="Hukidashi">
+            <p class="codeTitleHukidashi" id=323>変数.copy()</p>
+            </div>
+            <p><mark class="m5">変数をそのままコピーする関数。img以外でも可能。</mark></p>
+            <p>この場合、<mark class="m2tn">img=img2</mark>となっている。</p>
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi" id=324>cv2.cvtColor(img,定数)</p>
+                <p><mark class="m5">画像の色空間を変更する関数。ここではBGR空間をRGB空間に変更している。</mark></p>
+                <p>img：変数として写真を代入。</p>
+                <div class="ex-together">
+                <p>定数：これは呪文なので覚えるしかない。良く使うのは以下の二つ。</p>
+                    <ul>
+                        <li>BGRからRGBの場合：cv2.cvtColor(img,cv2.BGR2RGB)</li>
+                        <li>BGRからHSVの場合：cv2.cvtColor(cv2.BGR2HSV_FULL)</li>
+                    </ul>
+                <p></p>
+                </div>
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi" id=325>cascade.detectMultiscale(img,minSize=(,))</p>
+                </div>
+            <p><mark class="m5">顔認証実行関数！！</mark></p>
+            <p>img：<mark class="m4">「グレースケール」</mark>の画像を代入。</p>
+            <p>minSize：顔と認識させる最小サイズの指定。<mark class="m2tn">「minSize=」と書かないと、エラーが発生する</mark>ので注意！</p>
+            <div class="Hukidashi">
+                <p class="codeTitleHukidashi" id=326>quit()</p>
+                </div>
+            <p><mark class="m5">処理を終了させる。</mark> <mark class="m3tn">ifの中で使われることがほとんど。</mark></p>
+            </div>
+        </div>
+        </div>
+        </div>
+    
+    <div class="subtitles">
+        <p class="subtitle" id=4>質問コーナー</p>
+    </div>
+    <div class="questions">
+        <p>Q.　15行目：どうしてi_rect（img[y1:y2,x1:x2]）ではなくimg2[y1:y2,x1:x2]を使うの？</p>
+        <p>A.　ここで、i_rect=i_mosaicとすると、<mark class="m3tn">9行目などで使われるi_rect()の中身も変わってしまいます。</mark>元写真とモザイク写真を重ねることが目的なので、i_rectの代わりにimgをコピーしたimg2を使いましょう！</p>
+        <p>Q.　33行目：どうしてRGBをBGRに変換しているの？</p>
+        <p>A.　<mark class="m1tc">opencvは画像をBGR形式で出力</mark>しているのに対し、<mark class="m1tc">matplotlib.pyplotはRGBで出力</mark>します。故に、この処理がないと写真の赤要素と青要素が反転してしまいます。</p>
+        <p></p>
+    </div>
+    <div class="point-box">
+        <div class="point-title">補足</div>
+        <ul class="point-ex">
+            <li>Opencvは、<mark class="m2tn">顔が正面を向かず、斜めったりしていると反応が悪くなってしまいます</mark>。</li>
+            <li>RGB（BGR）とは・・・<br>RGBは(<div class="red">Red</div>,<div class="green">Green</div>,<div class="blue">Blue</div>)の略称で、あの<mark class="m3tn">「光の三原色」</mark>のことです。例えば、<mark class="m3tn">パソコンの画面やネットの画像（の大体）はRGB出力</mark>になってます。<div class="blue">B</div><div class="green">G</div><div class="red">R</div>はRedとBlueを反対にしたものです。</li>
+        </ul>
+    </div>
+        <div class="summary">
+            <div class="subtitles">
+                <p class="subtitle" id=5>結果！</p>
+            </div>
+            <img src="C:\Practice\web-site\number0\0people-gray.png" title="写真2">
+            <div class="summaryWords">
+            <p>何人か反応されていませんね。。しゃーなし。</p>
+            <p>まあそれでも4/6人分を認識してくれたのでOpenCV様に感謝！</p>
+            <p>それでは次回もお楽しみに～♪</p>
+            
+            
+            
+        </div>
+        </div>
+        <footer>
+            <div class="twitter">
+                <a class="ex-twitter" href="https://mobile.twitter.com/AnnaShirayuki" target="_blank">私のTwitterはこちら！（ｎ回目）</a>
+                <p class="ex-twitter">(お問い合わせ・質問・リクエストなど、どしどし送ってください!)</p>
+            </div>
+            <div class="next">
+                <a href="#menu" class="ex-next">他の記事を見る→</a>
+            </div>
+        </footer>
+    </div>
+</div> 
+    </div>
+    
+    <div class="left-things">
+        <p>目次</p>
+        <li class="iconPen"><a href="#1">Opencvを使ってモザイクをかけよう！</a></li>
+        <li class="iconPen"><a href="#2">コードはこれだっ！</a></li>
+        <li class="iconPen"><a href="#3">解説！</a></li>
+        <li class="iconTri"><a href="#31">コード説明</a></li>
+        <li class="iconTri"><a href="#32">関数説明</a>
+            <ul>
+                <li class="FunWord"><a href="#321">mosaic(img,rect,size)</a></li>
+                <li class="FunWord"><a href="#322">cv2.resize(img,dsize,fx,fy,interpolation)</a></li>
+                <li class="FunWord"><a href="#323">変数.copy()</a></li>
+                <li class="FunWord"><a href="#324">cv2.cvtColor(img,定数)</a></li>
+                <li class="FunWord"><a href="#325">cascade.detectMultiscale(img,minSize=(,))</a></li>
+                <li class="FunWord"><a href="#326">quit()</a></li>
+            </ul>
+        </li>
+        <li class="iconPen"><a href="#4">質問コーナー</a></li>
+        <li class="iconPen"><a href="#5">結果！！</a></li>
+        <div class="left-things-bar"></div>
+    </div>
+    </body>
+</html>
