@@ -1,0 +1,618 @@
+/*文字フォント*/
+.wf-notosansjapanese {
+    font-family: "Noto Sans JP"; 
+    font-weight:900;
+}
+    
+/*スクロールを滑らかに*/
+html { scroll-behavior: smooth;}
+
+/*画面サイズに沿った変更*/
+@media (max-width:1060px ) {
+    /*1060px以下の時*/
+    .all{
+        width:80%;
+        margin-left:10%;
+        margin-right: 10%;;
+        left:0;
+    }
+
+    .subtitles{
+        width:85%;
+    }
+
+    code{
+        font-size:170%;
+    }
+
+    li{
+        font-size:140%;
+    }
+}
+
+@media (min-width:1060px){
+    /*1060px以上の時*/
+    .all{
+        width:70%;
+
+        margin-right: 5%;
+    }
+
+    code{
+        font-size:120%;
+    }
+
+    li{
+        font-size:100%;
+    }
+}
+
+@media (max-width:1250px){
+    /*1250px以下の時*/
+    .code{
+        overflow-x: scroll;
+        white-space: nowrap;
+        margin-bottom: 20px;
+    }
+    .left-things{
+        display: none;
+    }
+
+}
+
+@media (max-width:1450px){
+    /*1450px以下の時*/ 
+    .UlContents1{
+        padding-right: 40px;
+    }
+}
+
+.red{
+    display:inline-block;
+    color:#FF5159;
+}
+
+.green{
+    display:inline-block;
+    color:#009877;    
+}
+
+.blue{
+    display:inline-block;
+    color:#0081FF;    
+}
+
+/*マーカー mark 細い＝tn 太い＝tc #00A1F3*/
+/*値調節　https://ameblo.jp/personwritep/entry-12430734626.html*/
+
+.m1tc{
+    color:black;
+    background: linear-gradient(transparent 50%, #FFB7CC 50%);
+}
+
+.m2tc{
+    color:black;
+    background: linear-gradient(transparent 50%, #76B9F8   50%);  
+}
+
+.m2tn{
+    color:black;
+    background: linear-gradient(transparent 50%,#76B9F8 0,#76B9F8 85%,transparent 0) ;  
+}
+
+.m3tc{
+    color:black;
+    background: linear-gradient(transparent 50%,#5DC1EE 0,#5DC1EE 85%,transparent 0) ;  
+}
+/*上が基準*/
+
+.m3tn{
+    color:black;
+    background: linear-gradient(transparent 50%,#5DC1EE 0,#5DC1EE 85%,transparent 0) ; 
+}
+
+.m4{
+    background: linear-gradient(transparent 50%,#d3d3d3 0,#d3d3d3 85%,transparent 0) ;
+}
+
+.m5{
+
+    background: linear-gradient(transparent 50%,#B4E1E6 0,#B4E1E6 85%,transparent 0) ; 
+}
+
+
+body{
+    font-family:"MS Pゴシック",sans-serif;
+    color:#1B3C40;
+}
+
+body p{
+    font-size: 100%;
+}
+
+header{
+    position:relative;
+    background-color:#d8eefe;
+    height:80px;
+}
+
+.name{
+    position:absolute;
+    color:#094067;
+    width:100%;
+    height:50%;
+    font-weight:900;
+    font-style: italic;
+    text-align: left;
+    margin:auto;
+    top:0;
+    bottom:0;
+    left:3%;
+    right:0;
+    font-size: 200%;
+}
+
+.all{
+    background-color:#fffffe;
+    border-color:black;
+    border:10px;
+    margin-top:20px;
+    float:right;
+    text-align:center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
+}
+
+
+
+.Title{
+    color:#094067;
+    font-size: 230%;
+}
+
+.date{
+    color:gray;
+    font-size: 95%;
+}
+
+.urlTwitter{
+    color:rgb(27, 60, 64);
+    text-decoration:underline;
+}
+
+.urlTwitter:hover{
+    color:#31a9ff   ;
+}
+
+.TableContents{
+    position:relative;
+    color:#1B3C40 ;
+    background-color:#d8eefe;
+    height:100%;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:5px;
+    /*相殺が発生*/
+    border-width:3px;
+    border-color:#64A9E7;
+    border-style:solid;
+}
+
+/*カーソルを乗せたとき*/
+.TableContents a:hover{
+    color:#64A9E7;
+}
+
+.contents{
+    
+    position:static;
+    text-align: center;
+    width:100%;
+    font-size: 30px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.UlContents1{    
+    position:absolute;
+    position:static;
+    font-size:20px;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:0px;
+ 
+}
+
+.UlContents1 a{
+    color:#094067 ;
+}
+
+.LiWord1{
+    list-style: none;
+    text-align:left;
+    margin-top: 8px;
+    margin-bottom:8px;
+}
+
+.LiWord2{
+    list-style-type:none;
+    text-align: left;
+}
+
+.UlContents2{
+    padding-left:20px;
+}
+
+.FunWord{
+    list-style-type:disc;
+    text-align:left;
+}
+
+/*icon*/
+.iconPen::before{
+    content:"\f303";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right:5px;
+    color:#094067    ;
+}
+
+.iconTri::before{
+    content:"\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right:5px;
+}
+
+.subtitles{
+    width:75%;
+    margin-left:auto;
+    margin-right:auto;
+    border-width: 3px;
+    border-left:20px;
+    border-left-color:#64A9E7    ;
+    border-left-style:solid;
+    margin-top:100px;
+    margin-bottom:30px;
+    background-color: #d8eefe;
+    position:relative;
+    padding:1em 1.5em;
+    overflow:hidden;
+}
+
+.subtitles:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    border-width:0 16px 16px 0; /* This trick side-steps a webkit bug */
+    border-style:solid;
+    border-color:#fff #fff #64A9E7  #64A9E7    ; /* A bit more verbose to work with .rounded too */
+    background:#64A9E7   ; /* For Opera when also applying a border-radius */
+    display:block; width:0; /* Only for Firefox 3.0 damage limitation */
+/* Optional: shadow */
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.subtitle{
+    font-size:30px;
+    color:#094067;
+    padding-top:1px;
+    padding-bottom:1px;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left:5px;
+    text-align:left;
+}
+
+.introduction p{
+    font-size: 20px;
+    padding:15px;
+}
+
+img{
+    width:390px;
+    height:270px;
+}
+
+.code-all{
+    margin-top:50px;
+}
+
+pre{
+    margin:0px;
+}
+
+.code{
+    width:75%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:0px;
+    margin-bottom:0px;
+    background-color:#263A46;
+    border-radius:5px;
+    color:#B6CCDB;
+    text-align:left;
+
+    letter-spacing:0.5px;
+}
+
+.code::-webkit-scrollbar{
+    height:20px;
+}
+
+/*border色*/
+
+.code::-webkit-scrollbar-track {
+    background: #c5c5c5bd;
+    border-radius:10px;
+}
+
+.code::-webkit-scrollbar-thumb  {
+    background: #334e5f8f;
+    border-radius:10px;
+}
+
+/*border色*/
+
+
+
+
+code{
+ 
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+    letter-spacing:0.3px;
+}
+
+.code-text{
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+    color:#FFB7CC;
+    font-size: 90%;
+}
+
+.code-div{
+    padding:5px 0px 5px 5px;
+}
+
+.code-div li::marker{
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+    font-size:110%;
+}
+
+.explanations{
+    text-align:left;
+    display:block;
+    margin-right:auto;
+    margin-left:10%;
+    width:80%;
+    font-size:20px;
+}
+
+.explanation p{
+    padding:15px 15px;
+}
+
+.explanation1 p {
+    padding: 15px 15px;
+}
+
+.explanation2 p{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.code-explanations{
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+.codeTitleNormal{
+    width:90%;
+    color:#094067;
+    border-bottom:4px;
+    border-bottom-color:#64A9E7 ;
+    border-bottom-style:solid;
+    padding:15px 15px 8px 10px;
+    margin-right:auto;
+    margin-left:0px;
+    position:relative;
+    background-color: white;
+    font-size:25px;
+}
+
+.excode{
+    margin-left:15px;
+}
+
+.Hukidashi{
+    margin-bottom:35px;
+    color:#094067;
+}
+
+.codeTitleHukidashi{
+    position: relative;
+    padding: 12px 12px 12px 15px;
+    background: -webkit-repeating-linear-gradient(-45deg, #D8EEFE, #D8EEFE 4px,#D8EEFE/**/ 3px, #D8EEFE/**/ 8px);
+    background: repeating-linear-gradient(-45deg, #D8EEFE, #D8EEFE 4px,#D8EEFE/**/c 3px, #D8EEFE/**/ 8px);
+    border-radius: 7px; 
+}
+
+.codeTitleHukidashi::after{
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 10%;
+    border: 15px solid transparent;
+    border-top: 15px solid #D8EEFE;
+   
+    height: 0;
+}
+
+/*下一個、どこで使われてるか不明*/
+.functionTi{
+    margin-top:40px;
+}
+
+.questions{
+    text-align: left;
+    display: block;
+    margin-right: auto;
+    margin-left: 10%;
+    width: 80%;
+    font-size: 20px;
+}
+
+.point-box {
+    position: relative;
+    width: 75%;
+    border: 5px solid rgb(161, 207, 209);
+    border-radius: 4px;
+    margin-top: 60px;
+    padding: 5px 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.point-title {
+    position: absolute;
+    padding: 0 0.5em;
+    left: 20px;
+    top: -23px; /* タイトルの位置を調整 */
+    font-family:"MS Pゴシック",sans-serif;/* タイトルの文字色 */
+    color:rgba(87, 122, 133, 0.63);
+    font-weight: bold;
+    font-size:30px; /* タイトルの文字サイズ */
+    background-color: #fff;
+}
+
+.point-ex{
+    margin:30px 15px 30px 10px;
+    text-align:left;
+    font-size:20px;
+}
+
+.point-ex li{
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size: 100%;
+}
+
+.summary{
+    padding-bottom:50px;
+}
+
+.summaryWords{
+    text-align: left;
+    display: block;
+    margin-right: auto;
+    margin-left:10%;
+    width: 70%;
+    font-size: 120%;
+}
+
+footer{
+    position: relative;
+    height:120px;
+    background-color: #D8EEFE;
+
+}
+
+.twitter{
+    position: absolute;
+    display: inline-block;
+    font-size: 20px;
+    text-align: left;
+    right:20px;
+    padding-bottom: 20px;
+    margin-top:20px;
+}
+
+.ex-twitter{
+    font-size: 80%;
+}
+
+.next{
+    position: absolute;
+    text-align:left;
+    font-size: 20px;
+    margin-left:30px;
+    margin-top:40px;  
+}
+
+.ex-next{
+    color:rgb(27, 60, 64);  
+}
+
+.ex-next:hover{
+    color:#64A9E7;
+}
+
+.left-things{
+    position: fixed;
+    margin-top:50px;
+    margin-left:5%;
+    margin-right:auto;
+    margin-bottom:100px;
+    padding-left:20px;
+    padding-top:30px;
+    width:15%;
+    left:0;
+    font-size: 20px;
+    float:right;
+    list-style-type: none;
+
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+
+
+.left-things::-webkit-scrollbar{
+    display:scroll;
+    height:10px;
+ 
+}
+
+
+.left-things::-webkit-scrollbar-track{
+    background-color: rgba(207, 206, 206, 0.568);
+    border-radius: 10px;
+}
+
+.left-things::-webkit-scrollbar-thumb{
+    background-color: #0b456e8f;
+    border-radius: 10px;
+}
+
+.left-things a{
+    color:#094067;
+    margin-bottom:20px; 
+}
+
+.left-things a:hover{
+    color:#64A9E7;
+}
+
+.left-things.fixed{
+    top:0;
+    z-index:999;
+    left:0;
+}
