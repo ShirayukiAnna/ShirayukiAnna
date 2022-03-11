@@ -22,10 +22,10 @@ html { scroll-behavior: smooth;}
     }
 
     code{
-        font-size:170%;
+        font-size:130%;
     }
 
-    li{
+    code.li{
         font-size:140%;
     }
 }
@@ -42,7 +42,7 @@ html { scroll-behavior: smooth;}
         font-size:120%;
     }
 
-    li{
+    code.li{
         font-size:100%;
     }
 }
@@ -523,7 +523,7 @@ code{
     display: block;
     margin-right: auto;
     margin-left:10%;
-    width: 70%;
+    width: 80%;
     font-size: 120%;
 }
 
